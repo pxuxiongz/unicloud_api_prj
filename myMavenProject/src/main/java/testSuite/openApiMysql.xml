@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name = "openApi">
+   <test name = "白名单管理" preserve-order="true" verbose="10">
+       <classes>
+           <class name = "openapi.muye.uco.mysql.scripts.WhiteList"/>
+<!--           <class name = "openapi.muye.uco.mysql.scripts.Parameter"/>-->
+<!--           <class name = "openapi.muye.uco.mysql.scripts.DatabaseManage"/>-->
+<!--           <class name = "openapi.muye.uco.mysql.scripts.AccountManage"/>-->
+<!--           <class name = "openapi.muye.uco.mysql.scripts.InstanceManage"/>-->
+       </classes>
+   </test>
+    <test name = "参数管理" preserve-order="true" verbose="10">
+        <classes>
+            <class name = "openapi.muye.uco.mysql.scripts.Parameter"/>
+        </classes>
+
+    </test>
+    <test name = "数据库管理" preserve-order="true" verbose="10">
+        <classes>
+            <class name = "openapi.muye.uco.mysql.scripts.DatabaseManage"/>
+        </classes>
+
+    </test>
+    <test name = "账号管理" preserve-order="true" verbose="10">
+        <classes>
+            <class name = "openapi.muye.uco.mysql.scripts.AccountManage"/>
+        </classes>
+    </test>
+    <test name="备份管理" preserve-order="true">
+        <classes>
+            <class name="openapi.muye.uco.mysql.scripts.BackupManage"></class>
+        </classes>
+    </test>
+    <test name = "实例管理" preserve-order="true" verbose="10">
+        <classes>
+<!--            <class name = "openapi.muye.uco.mysql.scripts.InstanceManage"/>-->
+            <class name="openapi.muye.uco.mysql.scripts.InstanceManage">
+                <methods>
+                    <exclude name="Test_DeleteDBInstance"/>
+                </methods>
+            </class>
+        </classes>
+
+    </test>
+    <listeners>
+        <listener class-name = "extentReport.Report.ExtentTestNGIReporterListener"></listener>
+<!--        <listener class-name="extentReport.Report.RetryListener"></listener>-->
+    </listeners>
+</suite>

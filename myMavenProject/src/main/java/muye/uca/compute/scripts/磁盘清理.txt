@@ -1,0 +1,48 @@
+1.先查询nosql和rds的当前再用的实例
+rds的sql：
+select uni_compute.tbl_domain_disk_info.disk_uuid from uni_compute.tbl_domain_disk_info where uni_compute.tbl_domain_disk_info.domain_id IN(SELECT id from uni_compute.tbl_domain WHERE uni_compute.tbl_domain.domain_uuid in (select uni_rds.nodes.vm_id from uni_rds.nodes WHERE uni_rds.nodes.deleted_at IS NULL)) and uni_compute.tbl_domain_disk_info.disk_size > 0;
+
+nosql的sql：
+select uni_compute.tbl_domain_disk_info.disk_uuid from uni_compute.tbl_domain_disk_info where uni_compute.tbl_domain_disk_info.domain_id IN(SELECT id from uni_compute.tbl_domain WHERE uni_compute.tbl_domain.domain_uuid in (select uni_nosql.tb_instance_node.host_id from uni_nosql.tb_instance_node where uni_nosql.tb_instance_node.deleted_at IS NULL)) and uni_compute.tbl_domain_disk_info.disk_size > 0;
+
+以上两个sql的合并：
+select uni_compute.tbl_domain_disk_info.disk_uuid from uni_compute.tbl_domain_disk_info where uni_compute.tbl_domain_disk_info.domain_id IN(SELECT id from uni_compute.tbl_domain WHERE uni_compute.tbl_domain.domain_uuid in (select uni_nosql.tb_instance_node.host_id from uni_nosql.tb_instance_node where uni_nosql.tb_instance_node.deleted_at IS NULL UNION select uni_rds.nodes.vm_id from uni_rds.nodes WHERE uni_rds.nodes.deleted_at IS NULL)) and uni_compute.tbl_domain_disk_info.disk_size > 0;
+
+
+2.将以上两个sql执行结果拷贝出来，放到data1.txt中
+
+3.在3台CVK上分别执行lvs | awk '{print $1}'
+
+4.将结果保存到data2.txt
+
+5.调用python方法，将差异的lv找出来
+with open(r"C:\Users\xuxiong\Desktop\data1.txt") as f:
+    file1 = f.readlines()
+    # print(file1)
+lst = []
+with open(r"C:\Users\xuxiong\Desktop\data2.txt") as f:
+    for line in f.readlines():
+        print(line,end="")
+        if line in file1:
+            pass
+        else:
+            lst.append(line)
+print(lst)
+newlst = []
+for i in lst:
+    h = i.replace("\n","")
+    newlst.append(h)
+print(newlst)
+
+6.将差异的lv放到in里面，然后执行如下语句
+
+SELECT  A.domain_uuid,A.user_id,B.disk_uuid,B.host_id from uni_compute.tbl_domain as A, uni_compute.tbl_domain_disk_info as B WHERE A.id in
+(select  uni_compute.tbl_domain_disk_info.domain_id FROM uni_compute.tbl_domain_disk_info where  uni_compute.tbl_domain_disk_info.disk_uuid in ('ebs-I7ZjKK2fCWCkdgu04t0hsYF', 'ebs-vYD5oCxXnUcWqagO0UUvtYw', 'sys-tHYzLVqzRmEM53eb2KcZkXt', 'sys-wI7emSYhQDhfdIt1JJ3gJn4') )
+and A.id = B.domain_id and B.disk_size > 0;
+
+以上结果可以经过处理后，放到InstanceIdUserId的dataprovider中，然后执行Test_DeleteVM
+
+7.如果虚拟机执行失败，这些磁盘没有挂载虚机，就将差异的lv放到in里面执行如下语句
+select uni_compute.tbl_domain_disk_info.disk_uuid,uni_compute.tbl_domain_disk_info.host_id from uni_compute.tbl_domain_disk_info where  uni_compute.tbl_domain_disk_info.disk_uuid in ('ebs-I7ZjKK2fCWCkdgu04t0hsYF') ;
+
+以上结果可以经过处理后，放到DeleteDiskID的dataprovider中，然后执行Test_deleteDisk

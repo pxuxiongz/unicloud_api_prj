@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name = "openApi">
+    <test name = "创建实例" preserve-order="true" verbose="10">
+        <classes>
+            <class name = "openapi.muye.uco.mysql.scripts.CreateInstance"/>
+        </classes>
+    </test>
+    <test name = "实例管理" preserve-order="true" verbose="10">
+        <classes >
+            <class name="openapi.muye.uco.mysql.scripts.InstanceManage">
+                <methods>
+                    <include name="Test_DeleteDBInstance"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <listeners>
+        <listener class-name = "extentReport.Report.ExtentTestNGIReporterListener"></listener>
+        <!--        <listener class-name="extentReport.Report.RetryListener"></listener>-->
+    </listeners>
+</suite>

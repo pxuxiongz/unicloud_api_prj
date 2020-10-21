@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0c755ade-f219-4dd9-821c-39a9d5bd8f4a" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\Tools\Maven\repository" />
+        <option name="mavenHome" value="D:/Tools/apache-maven-3.5.0" />
+        <option name="userSettingsFile" value="D:\Tools\apache-maven-3.5.0\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1dJ1RWpSBUh7esDxzYUlZlMTy67" />
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/openapi/muye/uco/util" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15431628" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="openapi.muye.uco.mysql" />
+      <recent name="openapi.muye.uco" />
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="openapi.muye.uco.mysql.dataprovider" />
+      <recent name="openapi.muye.uco.dp" />
+      <recent name="openapi.muye.uco.models.Parameter" />
+      <recent name="openapi.muye.uco.models.WhiteList" />
+      <recent name="openapi.muye.uco.models.InstanceManage" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\JavaProject\myMavenProject\src\main\java\openapi\muye\uco\util" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="TestNG.WhiteList.Test_AddWhiteList">
+    <configuration name="AccountManage.Test_CreateAccount" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="myMavenProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="openapi.muye.uco.mysql.scripts.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="openapi.muye.uco.mysql.scripts" />
+      <option name="MAIN_CLASS_NAME" value="openapi.muye.uco.mysql.scripts.AccountManage" />
+      <option name="METHOD_NAME" value="Test_CreateAccount" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateInstance.Test_CreateDBInstance" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="myMavenProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="openapi.muye.uco.mysql.scripts.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="openapi.muye.uco.mysql.scripts" />
+      <option name="MAIN_CLASS_NAME" value="openapi.muye.uco.mysql.scripts.CreateInstance" />
+      <option name="METHOD_NAME" value="Test_CreateDBInstance" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="D:/JavaProject/myMavenProject/src/main/java/testSuite/openApiMysql-createInstance.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="myMavenProject" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/main/java/testSuite/openApiMysql-createInstance.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DebugTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="myMavenProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="openapi.muye.uco.mysql.scripts.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="openapi.muye.uco.mysqlScripts" />
+      <option name="MAIN_CLASS_NAME" value="openapi.muye.uco.mysqlScripts.DebugTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WhiteList.Test_AddWhiteList" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="myMavenProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="openapi.muye.uco.mysql.scripts.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="openapi.muye.uco.mysql.scripts" />
+      <option name="MAIN_CLASS_NAME" value="openapi.muye.uco.mysql.scripts.WhiteList" />
+      <option name="METHOD_NAME" value="Test_AddWhiteList" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WhiteList.Test_ModifyWhiteList" type="TestNG" nameIsGenerated="true">
+      <module name="myMavenProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="openapi.muye.uco.mysql.scripts.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="openapi.muye.uco.mysql" />
+      <option name="MAIN_CLASS_NAME" value="openapi.muye.uco.mysql.scripts.WhiteList" />
+      <option name="METHOD_NAME" value="Test_ModifyWhiteList" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testng" type="TestNG">
+      <module name="myMavenProject" />
+      <option name="SUITE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="GROUP_NAME" value="" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="PARAMETERS" value="" />
+      <option name="OUTPUT_DIRECTORY" value="" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="PROPERTIES_FILE" value="" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="TestNG.testng" />
+      <item itemvalue="TestNG.WhiteList.Test_ModifyWhiteList" />
+      <item itemvalue="TestNG.AccountManage.Test_CreateAccount" />
+      <item itemvalue="TestNG.DebugTest" />
+      <item itemvalue="TestNG.D:/JavaProject/myMavenProject/src/main/java/testSuite/openApiMysql-createInstance.xml" />
+      <item itemvalue="TestNG.CreateInstance.Test_CreateDBInstance" />
+      <item itemvalue="TestNG.WhiteList.Test_AddWhiteList" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.WhiteList.Test_AddWhiteList" />
+        <item itemvalue="TestNG.CreateInstance.Test_CreateDBInstance" />
+        <item itemvalue="TestNG.D:/JavaProject/myMavenProject/src/main/java/testSuite/openApiMysql-createInstance.xml" />
+        <item itemvalue="TestNG.DebugTest" />
+        <item itemvalue="TestNG.AccountManage.Test_CreateAccount" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0c755ade-f219-4dd9-821c-39a9d5bd8f4a" name="Default Changelist" comment="" />
+      <created>1592128373811</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1592128373811</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk1.8.0_231/src.zip!/java/util/Base64.java</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/openapi/muye/uco/mysql/scripts/DatabaseManage.java</url>
+          <line>105</line>
+          <properties class="openapi.muye.uco.mysql.scripts.DatabaseManage" method="Test_DeleteDatabaseFail">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
