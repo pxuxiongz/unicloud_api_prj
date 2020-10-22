@@ -1,0 +1,4 @@
+target/
+*.class
+vcs.xml
+myMavenProject.iml

@@ -9,7 +9,7 @@ import org.testng.annotations.DataProvider;
  * @ Description: 账号管理的数据驱动
  */
 public class AccountManageDataProvider {
-
+    @DataProvider(name = "EngineMode")
     public static Object[][] EngineModeInstance(){
         return new Object[][]{
                 {"mysql","SE"},
