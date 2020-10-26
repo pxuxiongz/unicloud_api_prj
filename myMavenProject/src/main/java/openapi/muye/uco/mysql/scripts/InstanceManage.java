@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.jayway.jsonpath.JsonPath;
 import io.restassured.response.Response;
 import net.minidev.json.JSONArray;
+import openapi.muye.uco.common.model.GetDBInstanceModel;
 import openapi.muye.uco.config.ConfigValue;
 import openapi.muye.uco.mysql.models.InstanceManage.*;
 import openapi.muye.uco.util.ToSignUtil;
@@ -149,7 +150,7 @@ public class InstanceManage {
     }
 
 
-        @Test
+    @Test
     public  void Test_DescribeDBInstances() throws Exception {
         DescribeDBInstancesModel describeDBInstancesModel = new DescribeDBInstancesModel();
         describeDBInstancesModel.setRegionId(RegionId);

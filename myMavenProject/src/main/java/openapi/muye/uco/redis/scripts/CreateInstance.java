@@ -1,31 +1,29 @@
-package openapi.muye.uco.mysql.scripts;
-
+package openapi.muye.uco.redis.scripts;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jayway.jsonpath.JsonPath;
 import io.restassured.response.Response;
+import net.minidev.json.JSONArray;
 import openapi.muye.uco.common.model.GetDBInstanceModel;
 import openapi.muye.uco.config.ConfigValue;
-import openapi.muye.uco.mysql.models.InstanceManage.CreateDBInstanceModel;
-import openapi.muye.uco.mysql.models.InstanceManage.DescribeDBInstancesModel;
+import openapi.muye.uco.redis.models.InstanceManage.CreateDBInstanceModel;
+import openapi.muye.uco.redis.models.InstanceManage.DescribeDBInstancesModel;
 import openapi.muye.uco.util.ToSignUtil;
 import org.testng.annotations.Test;
-import net.minidev.json.JSONArray;
+import  static org.hamcrest.CoreMatchers.*;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.notNullValue;
-
 /**
  * @ Author :xx
- * @ Date : Created 21:22 2020/7/29
- * @ Description: 创建实例
+ * @ Date : Created 15:00 2020/10/22
+ * @ Description: 创建实例的脚本
  */
 public class CreateInstance {
-    String url = ConfigValue.url;
-    @Test(dataProvider = "CreateInstance",dataProviderClass = openapi.muye.uco.mysql.dataprovider.CreateInstanceProvider.class)
+    static String url = ConfigValue.url;
+    @Test(dataProviderClass = openapi.muye.uco.redis.dataprovider.CreateInstanceProvider.class,dataProvider = "CreateInstance")
     public void Test_CreateDBInstance(String Engine,String RegionId,int Port,String EngineVersion,String AzId,String VpcId,
                                       String InstanceMode,String InstanceType,String VpcSubnetId,String PayType,
                                       int UsedTime,String Period,String RenewType,
-                                      String AzIdSlave,String SourceInstanceId) throws Exception {
+                                      String AzIdSlave,String AccountPassword) throws Exception {
         /**
          * @ Author :xx
          * @ Date : Created 22:38 2020/7/29
@@ -43,60 +41,15 @@ public class CreateInstance {
         createDBInstanceModel.setInstanceMode(InstanceMode);
         createDBInstanceModel.setInstanceType(InstanceType);
         createDBInstanceModel.setVpcSubnetId(VpcSubnetId);
+        createDBInstanceModel.setInstanceClass("cache.s1.medium");
         createDBInstanceModel.setPayType(PayType);
-        createDBInstanceModel.setAzIdSlave(AzIdSlave);
-        createDBInstanceModel.setSourceInstanceId(SourceInstanceId);
         createDBInstanceModel.setUsedTime(UsedTime);
         createDBInstanceModel.setPeriod(Period);
         createDBInstanceModel.setRenewType(RenewType);
-
-        CreateDBInstance(createDBInstanceModel).then().log().all()
-                .assertThat()
-                .statusCode(200)
-                .body("RequestId",notNullValue());
-        Thread.sleep(60000);
-    }
-    @Test(dataProvider = "CreateInstanceReadOnly",dataProviderClass = openapi.muye.uco.mysql.dataprovider.CreateInstanceProvider.class)
-    public void Test_CreateDBInstanceReadOnly(String Engine,String RegionId,int Port,String EngineVersion,String AzId,String VpcId,
-                                      String InstanceMode,String InstanceType,String VpcSubnetId,String PayType,
-                                      int UsedTime,String Period,String RenewType,
-                                      String AzIdSlave) throws Exception {
-        /**
-         * @ Author :xx
-         * @ Date : Created 22:38 2020/7/29
-         * @ Param :[Engine, RegionId, Port, EngineVersion, AzId, VpcId, InstanceMode, InstanceType, VpcSubnetId, PayType, UsedTime, Period, RenewType, AzIdSlave]
-         * @ Return : void
-         * @ Description: 创建只读实例
-         */
-        //查询得到一个HA的instanceID
-
-        DescribeDBInstancesModel describeDBInstancesModel = new DescribeDBInstancesModel();
-        describeDBInstancesModel.setRegionId(RegionId);
-        Response response = new InstanceManage().DescribeDBInstances(describeDBInstancesModel);
-        response.then().log().all();
-        JSONArray jsonArray = JsonPath.read(response.asString(),"Items[?(@.InstanceMode == \"HA\" && @.Engine == \"mysql\" && @.InstanceStatus == \"running\")].DBInstanceId");
-        if(jsonArray.isEmpty()){
-            System.out.println("未找到instanceId，请确认是否有对应的实例");
-            return;
-        }
-        String SourceInstanceId = jsonArray.get(0).toString();
-        CreateDBInstanceModel createDBInstanceModel = new CreateDBInstanceModel();
-        createDBInstanceModel.setEngine(Engine);
-        createDBInstanceModel.setRegionId(RegionId);
-        createDBInstanceModel.setPort(Port);
-        createDBInstanceModel.setEngineVersion(EngineVersion);
-        createDBInstanceModel.setAzId(AzId);
-        createDBInstanceModel.setVpcId(VpcId);
-        createDBInstanceModel.setInstanceMode(InstanceMode);
-        createDBInstanceModel.setInstanceType(InstanceType);
-        createDBInstanceModel.setVpcSubnetId(VpcSubnetId);
-        createDBInstanceModel.setPayType(PayType);
         createDBInstanceModel.setAzIdSlave(AzIdSlave);
-        createDBInstanceModel.setSourceInstanceId(SourceInstanceId);
-        createDBInstanceModel.setUsedTime(UsedTime);
-        createDBInstanceModel.setPeriod(Period);
-        createDBInstanceModel.setRenewType(RenewType);
-
+        createDBInstanceModel.setQuantity(1);
+        createDBInstanceModel.setAccountPassword(AccountPassword);
+        createDBInstanceModel.setNodeNumber(3);
         CreateDBInstance(createDBInstanceModel).then().log().all()
                 .assertThat()
                 .statusCode(200)
@@ -104,7 +57,7 @@ public class CreateInstance {
         Thread.sleep(60000);
     }
 
-    public Response CreateDBInstance(CreateDBInstanceModel createDBInstanceModel ) throws Exception {
+    public Response CreateDBInstance(CreateDBInstanceModel createDBInstanceModel ) {
         /**
          * @ Author :xx
          * @ Date : Created 22:05 2020/7/29
@@ -126,22 +79,26 @@ public class CreateInstance {
         jsonBody.put("VpcId",createDBInstanceModel.getVpcId());
         jsonBody.put("VpcSubnetId",createDBInstanceModel.getVpcSubnetId());
         jsonBody.put("InstanceClass",createDBInstanceModel.getInstanceClass());
-        jsonBody.put("InstanceStorage",createDBInstanceModel.getInstanceStorage());
-        jsonBody.put("InstanceStorageType",createDBInstanceModel.getInstanceStorageType());
         jsonBody.put("PayType",createDBInstanceModel.getPayType());
         jsonBody.put("Quantity",createDBInstanceModel.getQuantity());
+        jsonBody.put("AccountPassword",createDBInstanceModel.getAccountPassword());
         if (createDBInstanceModel.getPayType().equals("YEAR_MONTH")) {
             jsonBody.put("UsedTime", createDBInstanceModel.getUsedTime());
             jsonBody.put("Period", createDBInstanceModel.getPeriod());
             jsonBody.put("RenewType", createDBInstanceModel.getRenewType());
         }
-        if(createDBInstanceModel.getInstanceMode().equals("HA")){
+        if(createDBInstanceModel.getInstanceMode().equals("HA") || createDBInstanceModel.getInstanceMode().equals("EE")){
             jsonBody.put("AzIdSlave", createDBInstanceModel.getAzIdSlave());
         }
-        if(createDBInstanceModel.getInstanceType().equals("read_only")){
-            jsonBody.put("SourceInstanceId",createDBInstanceModel.getSourceInstanceId());
+        if(createDBInstanceModel.getInstanceMode().equals("EE")){
+            jsonBody.put("NodeNumber",createDBInstanceModel.getNodeNumber());
         }
-        String uri = url + ToSignUtil.getUrlNew("POST",jsonParam);
+        String uri = "";
+        try {
+            uri = url + ToSignUtil.getUrlNew("POST", jsonParam);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 //        System.out.println(jsonBody.toJSONString());
         Response response =
                 given().urlEncodingEnabled(false)
@@ -185,6 +142,9 @@ public class CreateInstance {
         if(!getDBInstanceModel.getInstanceType().isEmpty()){
             mid += " && @.InstanceType == \""+getDBInstanceModel.getInstanceType()+"\"";
         }
+        if(getDBInstanceModel.getVersion() != 0.0){
+            mid += " && @.EngineVersion == \""+getDBInstanceModel.getVersion()+"\"";
+        }
         System.out.println(reg+mid+end);
         JSONArray jsonArray = JsonPath.read(response.asString(),reg+mid+end);
 //        JSONArray jsonArray = JsonPath.read(response.asString(),"Items[?(@.InstanceMode == \"HA\" && @.InstanceStatus == \"running\" && @.Engine == \"mysql\")].DBInstanceId");
@@ -196,5 +156,4 @@ public class CreateInstance {
         System.out.println("当前instanceId:"+jsonArray.get(0).toString());
         return jsonArray.get(0).toString();
     }
-
 }

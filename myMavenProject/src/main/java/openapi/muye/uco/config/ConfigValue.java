@@ -7,7 +7,7 @@ public class ConfigValue {
     public static String aks = "D65WUTgsIocAYYtfY6TC7u1yVENSuE";
     public static String RegionId = "cn-tianjin-yfb";
     public static String ENV = "pre";
-    public static String Engine  = "rds";
+    public static String Engine  = "redis";  // rds、redis、mongodb
     //线上环境
     static{
         if(ENV.equals("pre")) {//测试环境
@@ -17,7 +17,7 @@ public class ConfigValue {
             RegionId = "cn-tianjin-yfb";
         }
         if(ENV.equals("pro")){//线上环境:api.unicloud.com (103.252.251.25)
-            url = "https://api.unicloud.com/api/api/"+Engine+"?";
+            url = "https://api.unicloud.com/api/"+Engine+"?";
             ak = "zEl1os171Wsc9L9L";
             aks = "RzsPEDLWQzsSaJhVdmoZZfw7G5jG6z";
             RegionId = "HB1-BJMY";

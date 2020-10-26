@@ -1,8 +1,8 @@
 package openapi.muye.uco.mysql.scripts;
 
 import com.alibaba.fastjson.JSONObject;
+import openapi.muye.uco.common.model.GetDBInstanceModel;
 import openapi.muye.uco.config.ConfigValue;
-import openapi.muye.uco.mysql.models.InstanceManage.GetDBInstanceModel;
 import openapi.muye.uco.mysql.models.Parameter.DescribeParametersModel;
 import openapi.muye.uco.mysql.models.Parameter.ModifyParameterModel;
 import openapi.muye.uco.util.ToSignUtil;

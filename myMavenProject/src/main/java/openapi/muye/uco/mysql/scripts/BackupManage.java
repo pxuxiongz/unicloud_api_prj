@@ -3,13 +3,13 @@ package openapi.muye.uco.mysql.scripts;
 
 import com.alibaba.fastjson.JSONObject;
 import io.restassured.response.Response;
+import openapi.muye.uco.common.model.GetDBInstanceModel;
 import openapi.muye.uco.config.ConfigValue;
 import openapi.muye.uco.mysql.models.Backup.CreateBackupModel;
 import openapi.muye.uco.mysql.models.Backup.DescribeBackupPolicyModel;
 import openapi.muye.uco.mysql.models.Backup.DescribeBackupsModel;
 import openapi.muye.uco.mysql.models.Backup.ModifyBackupPolicyModel;
 import openapi.muye.uco.mysql.models.InstanceManage.DescribeDBInstanceAttributeModel;
-import openapi.muye.uco.mysql.models.InstanceManage.GetDBInstanceModel;
 import openapi.muye.uco.util.ToSignUtil;
 import org.testng.Assert;
 import org.testng.annotations.Test;

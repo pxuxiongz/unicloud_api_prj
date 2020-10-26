@@ -2,11 +2,11 @@ package openapi.muye.uco.mysql.scripts;
 
 import com.alibaba.fastjson.JSONObject;
 import io.restassured.response.Response;
+import openapi.muye.uco.common.model.GetDBInstanceModel;
 import openapi.muye.uco.config.ConfigValue;
 import openapi.muye.uco.mysql.models.DBManage.CreateDatabaseModel;
 import openapi.muye.uco.mysql.models.DBManage.DeleteDatabaseModel;
 import openapi.muye.uco.mysql.models.DBManage.DescribeDatabasesModel;
-import openapi.muye.uco.mysql.models.InstanceManage.GetDBInstanceModel;
 import openapi.muye.uco.util.ToSignUtil;
 import org.testng.Assert;
 import org.testng.annotations.Test;
