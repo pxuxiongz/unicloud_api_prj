@@ -111,7 +111,10 @@ public class DomainManager {
                 .post(url)
                 .then().log().all()
                 .statusCode(200)
-                .body("Status",equalTo("Success"));
+                .body("Status",equalTo("Success"))
+                .body("Message",equalTo("Destroy domain lvm successfully"))
+                .body("Detail",equalTo(true))
+                .body("Sucess",equalTo(true));
     }
 
 //    @Test

@@ -7,7 +7,7 @@ public class ConfigValue {
     public static String aks = "D65WUTgsIocAYYtfY6TC7u1yVENSuE";
     public static String RegionId = "cn-tianjin-yfb";
     public static String ENV = "pre";
-    public static String Engine  = "redis";  // rds、redis、mongodb
+    public static String Engine  = "mysql";  // rds、redis、mongodb
     //线上环境
     static{
         if(ENV.equals("pre")) {//测试环境
