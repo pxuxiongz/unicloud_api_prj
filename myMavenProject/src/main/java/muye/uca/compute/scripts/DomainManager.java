@@ -17,7 +17,7 @@ import static org.hamcrest.CoreMatchers.*;
 public class DomainManager {
 
     @Test(dataProviderClass = muye.uca.compute.DataProvider.DomainProvider.class,dataProvider = "InstanceIdUserId")
-    public void Test_DeleteVM(String instanceId,String userId,String diskId,int id) throws InterruptedException {
+    public void Test_DeleteVM(String instanceId,String userId) throws InterruptedException {
         JSONObject jsonBody = new JSONObject();
         jsonBody.put("InstanceId",instanceId);
         jsonBody.put("UserId",userId);
@@ -34,8 +34,6 @@ public class DomainManager {
                 .statusCode(200)
                 .body("Status",equalTo("Success"))
                 ;
-
-
         //删除虚拟机
         given().log().all()
                 .body(jsonBody.toJSONString())
@@ -47,33 +45,6 @@ public class DomainManager {
                 .body("Status",equalTo("Success"))
         ;
         Thread.sleep(1000);
-    //删除磁盘
-        String diskurl = "http://10.252.146.105:40201/uca/compute/v2.0/domain/localdisk/destroy";
-//        String diskId = "sys-aKeb2h8nMSvjcUZidOhPZ1U";
-        String hostId="";
-        if(id==5){
-            hostId="5B256914-346B-03D3-E611-B6CF92EB65DA";
-        }
-        if(id == 6){
-            hostId = "5B25691A-346B-03CD-E611-B6CF4EBC08E2";
-        }
-        if(id == 7){
-            hostId = "5B2569FE-346B-03D2-E611-B7CF52B37141";
-        }
-//        String requerIDDisk= "123"+Math.abs(new Random().nextInt());
-//        System.out.println(requerID);
-        JSONObject jsonBodyDisk = new JSONObject();
-        jsonBodyDisk.put("DiskId",diskId);
-        jsonBodyDisk.put("HostId",hostId);
-        given().log().all()
-                .body(jsonBodyDisk.toJSONString())
-                .header("RequestId",requerID+123)
-                .contentType("application/json")
-                .when()
-                .post(diskurl)
-                .then().log().all()
-                .statusCode(200)
-                .body("Status",equalTo("Success"));
 
     }
 

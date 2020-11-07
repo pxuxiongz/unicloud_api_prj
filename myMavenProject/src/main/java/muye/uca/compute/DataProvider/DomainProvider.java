@@ -15,24 +15,16 @@ public class DomainProvider {
 //                {"ecs-BghQsjssQpJUyuwd68GJHT0aZTU4LZ04","920d682e-9e25-47f6-a66d-28dba2342ba5","ebs-ltC407ULxaKVWVLYDZlCdUA",6},
 //                {"ecs-jLqvvsgOsnPa5hYNbABwV9Bqrz6TjZdH","30eb0df2-3341-4b59-be11-fa53fa915184","sys-0ZnvQ4fLoxkLsKyaDxJWP86",6},
 
-                {"ecs-yj2azLGOK845bklJMqooajCriZnPfFtl","30eb0df2-3341-4b59-be11-fa53fa915184","sys-tQPQ6sPK9BCeyaOZ9JU3Dlh",7},
-                {"ecs-yj2azLGOK845bklJMqooajCriZnPfFtl","30eb0df2-3341-4b59-be11-fa53fa915184","ebs-4loxINZwTrgamlbofAd8lOX",7},
-                {"ecs-Yquxlj5msgUVykdVCJwTFFGBRbDjzbbf","920d682e-9e25-47f6-a66d-28dba2342ba5","sys-4OoOxVlNEYseI4yJN3ODW4A",5},
-                {"ecs-Yquxlj5msgUVykdVCJwTFFGBRbDjzbbf","920d682e-9e25-47f6-a66d-28dba2342ba5","ebs-5nJB17Z6En48QQQMfYVbxRN",5},
-                {"ecs-gpi7lwzZJ5IgIGeNgUoZyoMvwMwcaLr8","30eb0df2-3341-4b59-be11-fa53fa915184","sys-leFI0xxdCeDF1dfTZshQu40",6},
-                {"ecs-gpi7lwzZJ5IgIGeNgUoZyoMvwMwcaLr8","30eb0df2-3341-4b59-be11-fa53fa915184","ebs-lMaJxmP7foXVT2xnrz3JYrF",6},
-                {"ecs-gpi7lwzZJ5IgIGeNgUoZyoMvwMwcaLr8","30eb0df2-3341-4b59-be11-fa53fa915184","sys-leFI0xxdCeDF1dfTZshQu40",5},
-                {"ecs-gpi7lwzZJ5IgIGeNgUoZyoMvwMwcaLr8","30eb0df2-3341-4b59-be11-fa53fa915184","ebs-lMaJxmP7foXVT2xnrz3JYrF",5},
-                {"ecs-kBi6mS8H0fCEl7AHWeynAYO7mpS2wNNr","30eb0df2-3341-4b59-be11-fa53fa915184","sys-3ErKXn6ugOVaivr9Ct4CcaD",6},
-                {"ecs-kBi6mS8H0fCEl7AHWeynAYO7mpS2wNNr","30eb0df2-3341-4b59-be11-fa53fa915184","ebs-ncs0g3gcaCDDR7dBx0HjUQJ",6},
-                {"ecs-kBi6mS8H0fCEl7AHWeynAYO7mpS2wNNr","30eb0df2-3341-4b59-be11-fa53fa915184","sys-3ErKXn6ugOVaivr9Ct4CcaD",5},
-                {"ecs-kBi6mS8H0fCEl7AHWeynAYO7mpS2wNNr","30eb0df2-3341-4b59-be11-fa53fa915184","ebs-ncs0g3gcaCDDR7dBx0HjUQJ",5},
-                {"ecs-BxPUFsEyOukPcCWHuihtRpFxOSTrO5m2","30eb0df2-3341-4b59-be11-fa53fa915184","sys-BLFmEyqc0Z67Q5u1QVhIDv9",5},
-                {"ecs-BxPUFsEyOukPcCWHuihtRpFxOSTrO5m2","30eb0df2-3341-4b59-be11-fa53fa915184","ebs-SYpOTEOVPhTTEpffhXkFDiC",5},
-                {"ecs-2TW1ukVrQHK7ZQ48aJtOWc9pv84loyX1","30eb0df2-3341-4b59-be11-fa53fa915184","sys-vbPy4Z9TJuYK7rAKiH1ZaMn",6},
-                {"ecs-2TW1ukVrQHK7ZQ48aJtOWc9pv84loyX1","30eb0df2-3341-4b59-be11-fa53fa915184","ebs-v45ThtEVtZjueS5yeX79UTG",6},
-                {"ecs-4hUMITcCBUpYl1uN0nSfG3yfJqLKr8YR","30eb0df2-3341-4b59-be11-fa53fa915184","sys-sVFiDfYxAfAIH2BqqR1ULRY",6},
-                {"ecs-4hUMITcCBUpYl1uN0nSfG3yfJqLKr8YR","30eb0df2-3341-4b59-be11-fa53fa915184","sys-sVFiDfYxAfAIH2BqqR1ULRY",5}
+                {"ecs-Jo9nu5djNCZJOmxNZLkIkwXtpA0C4BIm","8f74d977-0208-4a7e-87ce-facacf798c76"},
+                {"ecs-BbESDw4Rqz64exdgzeiR7WomNgIsYiON","30eb0df2-3341-4b59-be11-fa53fa915184"},
+                {"ecs-j8T27N2VrsbCmfS7XlhPrMnAP0oHmtfv","d740bb85-4e44-4e6d-85f4-0cedb9ca8c33"},
+                {"ecs-pQPmW64WxEqTQXUAiURmigwQtqLGncR8","d740bb85-4e44-4e6d-85f4-0cedb9ca8c33"},
+                {"ecs-y4e7LgnAuE4M1eVEgEWFnthpZ8rsha0G","d740bb85-4e44-4e6d-85f4-0cedb9ca8c33"},
+                {"ecs-x1ZxI5CxvcUutaTK5bCNud4HV6sJXknn","30eb0df2-3341-4b59-be11-fa53fa915184"},
+                {"ecs-x2hPDumYMlho2h4vCKt3aBZDRPL4pHQY","30eb0df2-3341-4b59-be11-fa53fa915184"},
+                {"ecs-pECIXHdCnCOA5Rl0w2oed4lIvm1INpQB","30eb0df2-3341-4b59-be11-fa53fa915184"},
+                {"ecs-kwmqqttOvdQfbCG7fM046iwghDRsjWOt","d740bb85-4e44-4e6d-85f4-0cedb9ca8c33"},
+                {"ecs-Jtg2qjjdzVqb7q9OYoWWMfIMKJyxwECj","2074e50a-8deb-4e77-b395-24140370b18c"}
 
 
 
@@ -43,18 +35,24 @@ public class DomainProvider {
     @DataProvider
     public static Object[][] DeleteDiskID(){
         return new Object[][]{
-                {"ebs-1T9P5tv22JhOFE5rcu2By9y",6},
-                {"ebs-4qsGAVTLU6G4sydErIpgmqc",6},
-                {"ebs-c1jQmGYV9cwJ4pPWLEMaFor",6},
-                {"ebs-KyYwxixwtb3sWMYBUuZbIzn",6},
-                {"ebs-llrOTNAEeMGVFGwM9KgF40n",6},
-                {"ebs-wHKa1N3pCqLK5LobnS19uQ1",6},
-                {"sys-2PiVtUJLFnH01EiImj3BHmg",6},
-                {"sys-7zgDstQEEkfSr5u1GxikpJd",6},
-                {"sys-BNBJo5KKlJo0YoP84ZWB1qg",6},
-                {"sys-R7cjSo8bbsZHpFANDGa5oOF",6},
-                {"sys-uqqA21KQfFyqoCxOBB9fEsK",6},
-                {"sys-vfZ12tbeRuBiBCibnghTfwr",6}
+                {"sys-zuXhK40ODfOwFzaZgkZOzak",6},
+                {"sys-Rs0qq1Kvd0O50MjYWggHaCd",6},
+                {"sys-KmME7mOhOohDRLxDkBtRkbr",6},
+                {"sys-A2keUlDSvhldnVMgBSjyNiw",6},
+                {"ebs-y41a7lwvnsQynqXAYKJCkRJ",6},
+                {"ebs-km9CPSNI04X7vQt45bWJueg",6},
+                {"ebs-3FIjlJfffUND3qH9oEF6LH0",6},
+                {"ebs-v8r3Ul66RXeXthewhgMfrXI",6},
+                {"sys-3B0ipPzU4kIHJDJRVOL4i1q",6},
+                {"sys-yHTHjKcdMBb73fu3o2fDhca",6},
+                {"sys-IYMIKEy6PN64agSvoVQe2mX",6},
+                {"ebs-vazAxGUoNnOc5fta6ivf9sR",6},
+                {"ebs-v2HFnqDdff4Eu7c450LkjUX",6},
+                {"ebs-CxUkosXrhf6tnaIIWN7Pxnb",6},
+                {"sys-grbosQLY9mm32VgsUpFDRbQ",6},
+                {"ebs-lv0lI2VWpGJTB7G2jqBvIWx",6}
+
+
         };
     }
 }
