@@ -1,10 +1,13 @@
 package muye.uca.compute.scripts;
 import com.alibaba.fastjson.JSONObject;
 import io.restassured.response.Response;
+import org.springframework.core.ReactiveAdapterRegistry;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import  static io.restassured.RestAssured.*;
@@ -15,6 +18,8 @@ import static org.hamcrest.CoreMatchers.*;
  * @ Description: 虚拟机操作
  */
 public class DomainManager {
+    String UCAURL = "http://10.252.146.105"; //YFB
+//    String UCAURL = "http://10.254.161.107";//CTO
 
     @Test(dataProviderClass = muye.uca.compute.DataProvider.DomainProvider.class,dataProvider = "InstanceIdUserId")
     public void Test_DeleteVM(String instanceId,String userId) throws InterruptedException {
@@ -22,24 +27,53 @@ public class DomainManager {
         jsonBody.put("InstanceId",instanceId);
         jsonBody.put("UserId",userId);
         //先关闭虚拟机
-        String url = "http://10.252.146.105:40201/uca/compute/v2.0/domain/shutdown";
+        String url = UCAURL+":40201/uca/compute/v2.0/domain/shutdown";
         String requerID= "123"+Math.abs(new Random().nextInt());
-        given().log().all()
-                .body(jsonBody.toJSONString())
-                .header("RequestId",requerID)
-                .contentType("application/json")
-                .when()
-                .post(url)
-                .then().log().all()
-                .statusCode(200)
-                .body("Status",equalTo("Success"))
-                ;
+        //查询虚机状态
+        Map<String,String> params = new HashMap<>();
+        params.put("instanceId",instanceId);
+        params.put("userId",userId);
+//        boolean flag = true;
+        int time = 1;
+        while (true){
+            given().log().all()
+                    .body(jsonBody.toJSONString())
+                    .header("RequestId",requerID)
+                    .contentType("application/json")
+                    .when()
+                    .post(url)
+                    .then().log().all()
+//                    .statusCode(200)
+//                    .body("Status",equalTo("Success"))
+            ;
+
+            Response VmStatusResponse = given().log().all()
+                    .queryParams(params)
+                    .when()
+                    .get(UCAURL+":40201/uca/compute/v2.0/domain/describeStatus")
+                    ;
+            VmStatusResponse.then().log().all();
+            System.out.printf("循环执行测试是%d",time);
+            if (VmStatusResponse.body().jsonPath().getString("Detail").equals("stop")
+             || VmStatusResponse.body().jsonPath().getString("Detail").equals("deleted")
+             || VmStatusResponse.body().jsonPath().getString("Detail").isEmpty()){
+               break;
+            }
+            Thread.sleep(5000);
+            time += 1;
+
+            if (time > 10){
+                break;
+            }
+
+        }
+
         //删除虚拟机
         given().log().all()
                 .body(jsonBody.toJSONString())
                 .contentType("application/json")
                 .when()
-                .post("http://10.252.146.111:40202/uca/compute/v2.0/delivery/ucaDelivery/delete")
+                .post(UCAURL+":40202/uca/compute/v2.0/delivery/ucaDelivery/delete")
                 .then().log().all()
                 .statusCode(200)
                 .body("Status",equalTo("Success"))
@@ -57,7 +91,8 @@ public class DomainManager {
          * @ Return : void
          * @ Description: 删除磁盘
          */
-        String url = "http://10.252.146.105:40201/uca/compute/v2.0/domain/localdisk/destroy";
+//        String url = "http://10.252.146.105:40201/uca/compute/v2.0/domain/localdisk/destroy";//YFB环境
+        String url = UCAURL+":40201/uca/compute/v2.0/domain/localdisk/destroy";//CTO环境
 //        String diskId = "sys-aKeb2h8nMSvjcUZidOhPZ1U";
         String hostId="";
         String requerID= "123"+Math.abs(new Random().nextInt());
@@ -70,6 +105,12 @@ public class DomainManager {
         }
         if(id == 7){
             hostId = "5B2569FE-346B-03D2-E611-B7CF52B37141";
+        }
+        if(id == 3){
+            hostId = "E97A7B52-CFB6-11E6-03CD-7485C4BD7096";
+        }
+        if(id == 4){
+            hostId = "BFE7A26C-CFB9-11E6-03CC-7485C4BD7066";
         }
         JSONObject jsonBody = new JSONObject();
         jsonBody.put("DiskId",diskId);
@@ -125,23 +166,25 @@ public class DomainManager {
                 .statusCode(200)
                 .body("Status",equalTo("Success"));
     }
-//    @Test
+    @Test
     public void Test_OMC(){
-        String omcurl = "http://10.0.45.193:40299/api/omc/uca/center/v2.0/domain/list?current=1&size=100&";
-        Response response = given().log().all()
-                .header("X-Request-Region","cn-tianjin-yfb")
-                .queryParam("domainState","running")
-                .queryParam("domainTag","NOSQL")
-//                .header("Referer","http://10.0.45.193:40299/")
-//                .cookie("Hm_lvt_6ef5d3fc1524a3e2e9e085960813029b=1598152360,1598232354,1598316573,1598336186; Hm_lpvt_6ef5d3fc1524a3e2e9e085960813029b=1598354972")
+        //查询虚机状态
+        String instanceId = "ecs-0foI0DxctquFZQNBJ19yyQijaHQzTN5m";
+        String userId = "30eb0df2-3341-4b59-be11-fa53fa915184";
+        Map<String,String> params = new HashMap<>();
+        params.put("instanceId",instanceId);
+        params.put("userId",userId);
+        Response VmStatusResponse = given().log().all()
+                .queryParams(params)
                 .when()
-                .get(omcurl);
-                response.then().log().all()
-//        System.out.println(response.body().jsonPath().getString("Detail.Records[0].DomainState"));
-                .statusCode(200);
-        String lst = response.body().jsonPath().getString("Detail.Records.DomainName");
-        System.out.println(lst);
-        System.out.println(response.body().jsonPath().getString("Detail.Records.HostName"));
-        System.out.println(response.body().jsonPath().getString("Detail.Records.UserId"));
+                .get(UCAURL+":40201/uca/compute/v2.0/domain/describeStatus")
+                ;
+        if (VmStatusResponse.body().jsonPath().getString("Detail").equals("stop")){
+            System.out.println("ok");
+        }
+//        String lst = response.body().jsonPath().getString("Detail.Records.DomainName");
+//        System.out.println(lst);
+//        System.out.println(response.body().jsonPath().getString("Detail.Records.HostName"));
+//        System.out.println(response.body().jsonPath().getString("Detail.Records.UserId"));
     }
 }

@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
  * @ Description: 创建实例的数据驱动
  */
 public class CreateInstanceProvider {
-    public static String Engine = "redis";
+    public static String Engine = ConfigValue.Engine;
     public static String RegionId = ConfigValue.RegionId;
     public static int Port = 6379;
-    public static String EngineVersion = "6.0";
+    public static String EngineVersion = "3.2";
     public static String AzId = "cn-tianjin-a-cto";
     public static String VpcId = "vpc-rxtptt5yxl2ob";
     public static String VpcSubnetId = "bdd539457b004f8caadc44270aed0cf5";

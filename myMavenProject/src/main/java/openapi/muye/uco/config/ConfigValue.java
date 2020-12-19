@@ -16,6 +16,12 @@ public class ConfigValue {
             aks = "D65WUTgsIocAYYtfY6TC7u1yVENSuE";
             RegionId = "cn-tianjin-yfb";
         }
+        if(ENV.equals("pre-sub")) {//测试环境xx的子账号xx1
+            url = "http://10.0.45.193:30990/api/"+Engine+"?";
+            ak = "0k8wx5eKajhbHpOi";
+            aks = "CydH92w8AketRGrZoR59ba4J1dNsXs";
+            RegionId = "cn-tianjin-yfb";
+        }
         if(ENV.equals("pro")){//线上环境:api.unicloud.com (103.252.251.25)
             url = "https://api.unicloud.com/api/"+Engine+"?";
             ak = "zEl1os171Wsc9L9L";
